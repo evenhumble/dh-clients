@@ -1,8 +1,5 @@
 package io.hedwig.dh.restignite.repository;
 
-import static org.junit.Assert.*;
-
-import org.apache.ignite.Ignite;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

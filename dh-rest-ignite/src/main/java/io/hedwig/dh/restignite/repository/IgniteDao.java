@@ -45,4 +45,5 @@ public class IgniteDao {
   public List query(String sql) {
     return template.queryForList(sql);
   }
+
 }
