@@ -1,22 +1,14 @@
 package io.hedwig.dh.restignite.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.stereotype.Component;
 
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 
-import javax.sql.DataSource;
-
-import io.hedwig.dh.restignite.utils.client.IgniteWrapper;
+import javax.annotation.PostConstruct;
 
 /**
  * 1. author: patrick 2. address: github.com/ideafortester
@@ -24,16 +16,19 @@ import io.hedwig.dh.restignite.utils.client.IgniteWrapper;
 @Component
 public class IgniteDao {
 
-  @Autowired
   private JdbcTemplate template;
 
-//  public IgniteDaoService() {
-//    IgniteWrapper.getIgnite().active(true);
-//    init();
-//  }
+  @Value("${ignite.db.url}")
+  private String igniteDBUrl;
 
 
+  @PostConstruct
   private void init() {
+
+    DriverManagerDataSource ds =
+        new DriverManagerDataSource(this.igniteDBUrl);
+    ds.setDriverClassName("org.apache.ignite.IgniteJdbcThinDriver");
+    template = new JdbcTemplate(ds);
 //    try {
 //      DriverManagerDataSource dataSource =
 //          new DriverManagerDataSource("jdbc:ignite:thin://10.213.128.98:10800");

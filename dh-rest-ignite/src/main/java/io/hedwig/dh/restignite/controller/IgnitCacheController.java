@@ -16,7 +16,8 @@ import java.util.Date;
 import io.hedwig.dh.restignite.utils.client.IgniteWrapper;
 
 /**
- * 1. author: patrick 2. address: github.com/ideafortester
+ * 1. author: patrick
+ * 2. address: github.com/ideafortester
  */
 
 @RestController
