@@ -23,9 +23,9 @@ import io.hedwig.dh.restignite.repository.IgniteDao;
  */
 
 @RestController
-public class IgnitCacheQueryController {
+public class IgniteCacheQueryController {
 
-  private static Logger logger = LoggerFactory.getLogger(IgnitCacheQueryController.class);
+  private static Logger logger = LoggerFactory.getLogger(IgniteCacheQueryController.class);
   @Autowired
   private IgniteDao daoService;
 
