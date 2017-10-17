@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +18,8 @@ import java.util.Map;
 import io.hedwig.dh.restignite.repository.IgniteDao;
 
 /**
- * 1. author: patrick 2. address: github.com/ideafortester
+ * 1. author: patrick
+ * 2. address: github.com/ideafortester
  */
 
 @RestController
