@@ -51,6 +51,21 @@ public class IgnitCacheQueryController {
     }
 
     logger.info("input_sql={}", sql);
+    return buildResponseEntity(sql);
+  }
+
+
+  @RequestMapping(value = "/sql"
+      , produces = MediaType.APPLICATION_JSON_UTF8_VALUE
+      , consumes = MediaType.APPLICATION_JSON_UTF8_VALUE
+  )
+  public ResponseEntity sqlQuery(@RequestParam String sql) {
+
+    logger.info("input_sql={}", sql);
+    return buildResponseEntity(sql);
+  }
+
+  private ResponseEntity buildResponseEntity(@RequestParam String sql) {
     List queryResult = daoService.query(sql);
     Map<String, Object> result = new HashMap<>();
     result.put("totalCount", result.size());
