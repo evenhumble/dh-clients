@@ -68,31 +68,63 @@
         <!--<property name="persistentStoreConfiguration">-->
             <!--<bean class="org.apache.ignite.configuration.PersistentStoreConfiguration"/>-->
         <!--</property>-->
+        <property name="atomicConfiguration">
+            <bean class="org.apache.ignite.configuration.AtomicConfiguration">
+                <!-- Set number of backups. -->
+                <property name="backups" value="1"/>
+            </bean>
+        </property>
         <property name="binaryConfiguration">
             <bean class="org.apache.ignite.configuration.BinaryConfiguration">
                 <property name="compactFooter" value="false"/>
             </bean>
         </property>
+        <property name="pluginConfigurations">
+            <bean class="org.gridgain.grid.configuration.GridGainConfiguration">
+                <property name="rollingUpdatesEnabled" value="true"/>
+            </bean>
+        </property>
         <!-- Explicitly configure TCP discovery SPI to provide list of initial nodes. -->
+        <!--<property name="discoverySpi">-->
+            <!--<bean class="org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi">-->
+                <!--<property name="ipFinder">-->
+                    <!--&lt;!&ndash;-->
+                        <!--Ignite provides several options for automatic discovery that can be used-->
+                        <!--instead os static IP based discovery. For information on all options refer-->
+                        <!--to our documentation: http://apacheignite.readme.io/docs/cluster-config-->
+                    <!--&ndash;&gt;-->
+                    <!--&lt;!&ndash; Uncomment static IP finder to enable static-based discovery of initial nodes. &ndash;&gt;-->
+                    <!--&lt;!&ndash;<bean class="org.apache.ignite.spi.discovery.tcp.ipfinder.vm.TcpDiscoveryVmIpFinder">&ndash;&gt;-->
+                    <!--<bean class="org.apache.ignite.spi.discovery.tcp.ipfinder.multicast.TcpDiscoveryMulticastIpFinder">-->
+                        <!--&lt;!&ndash;<property name="localPort" value="11475"/>&ndash;&gt;-->
+                        <!--<property name="addresses">-->
+                            <!--<list>-->
+                                <!--&lt;!&ndash; In distributed environment, replace with actual host IP address. &ndash;&gt;-->
+                                <!--&lt;!&ndash;<value>127.0.0.1:10475..10485</value>&ndash;&gt;-->
+                                <!--<value>10.214.129.225:11475..11485</value>-->
+                                <!--<value>10.214.129.229:11475..11485</value>-->
+                                <!--<value>10.214.129.232:11475..11485</value>-->
+                                <!--&lt;!&ndash;<value>10.199.212.81:10475..10485</value>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<value>10.199.212.82:10475..10485</value>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<value>10.199.212.83:10475..10485</value>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<value>10.199.212.84:10475..10485</value>&ndash;&gt;-->
+
+                            <!--</list>-->
+                        <!--</property>-->
+                    <!--</bean>-->
+                <!--</property>-->
+            <!--</bean>-->
+        <!--</property>-->
         <property name="discoverySpi">
             <bean class="org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi">
+                <!--<property name="localPort" value="11475"/>-->
                 <property name="ipFinder">
-                    <!--
-                        Ignite provides several options for automatic discovery that can be used
-                        instead os static IP based discovery. For information on all options refer
-                        to our documentation: http://apacheignite.readme.io/docs/cluster-config
-                    -->
-                    <!-- Uncomment static IP finder to enable static-based discovery of initial nodes. -->
-                    <!--<bean class="org.apache.ignite.spi.discovery.tcp.ipfinder.vm.TcpDiscoveryVmIpFinder">-->
-                    <bean class="org.apache.ignite.spi.discovery.tcp.ipfinder.multicast.TcpDiscoveryMulticastIpFinder">
+                    <bean class="org.apache.ignite.spi.discovery.tcp.ipfinder.vm.TcpDiscoveryVmIpFinder">
                         <property name="addresses">
                             <list>
-                                <!-- In distributed environment, replace with actual host IP address. -->
-                                <value>127.0.0.1:10475..10485</value>
-                                <!--<value>10.199.212.81:10475..10485</value>-->
-                                <!--<value>10.199.212.82:10475..10485</value>-->
-                                <!--<value>10.199.212.83:10475..10485</value>-->
-                                <!--<value>10.199.212.84:10475..10485</value>-->
+                                <value>10.214.129.225:11475..11485</value>
+                                <value>10.214.129.229:11475..11485</value>
+                                <value>10.214.129.232:11475..11485</value>
                             </list>
                         </property>
                     </bean>

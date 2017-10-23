@@ -14,12 +14,15 @@ import java.util.Set;
 
 public class IgniteWrapper {
 
-  private static Ignite ignite ;
+  private static Ignite ignite;
+  private static final Object lock = new Object();
+
   public static Ignite getIgnite() {
 //    return Ignition.start("ignite_setting.xml");
-
-    if(ignite==null) {
-      ignite = Ignition.start("ignite_setting.xml");
+    synchronized (lock) {
+      if (ignite == null) {
+        ignite = Ignition.start("ignite_setting.xml");
+      }
     }
     return ignite;
   }
@@ -31,12 +34,12 @@ public class IgniteWrapper {
     System.out.println(cache.get(key));
   }
 
-  public static CacheConfiguration createDefaultTxCacheConfig(String cacheName){
+  public static CacheConfiguration createDefaultTxCacheConfig(String cacheName) {
 
-     CacheConfiguration cc = new CacheConfiguration(cacheName);
-     cc.setCacheMode(CacheMode.PARTITIONED);
-     cc.setAtomicityMode(CacheAtomicityMode.TRANSACTIONAL);
-     return cc;
+    CacheConfiguration cc = new CacheConfiguration(cacheName);
+    cc.setCacheMode(CacheMode.PARTITIONED);
+    cc.setAtomicityMode(CacheAtomicityMode.TRANSACTIONAL);
+    return cc;
   }
 
   public static <K, V> void putAndPrintBinary(IgniteCache<K, V> cache, K key, V instance) {
@@ -48,21 +51,21 @@ public class IgniteWrapper {
     System.out.println(bo.type());
     System.out.println(bo.hasField("name"));
     System.out.println(java.util.Optional.ofNullable(bo.field("firstName")));
-    System.out.println("same cache?"+(cache.get(key).equals(bo)?"yes":"no"));
+    System.out.println("same cache?" + (cache.get(key).equals(bo) ? "yes" : "no"));
   }
 
-  public static <K,V> void getAll(IgniteCache<K,V> cache){
+  public static <K, V> void getAll(IgniteCache<K, V> cache) {
     Set<Integer> keys = new HashSet<>();
     for (int i = 0; i < 100; i++) {
-       keys.add(i);
+      keys.add(i);
     }
-    Map<Integer,V> result = (Map<Integer, V>) cache.getAll((Set<? extends K>) keys);
+    Map<Integer, V> result = (Map<Integer, V>) cache.getAll((Set<? extends K>) keys);
     for (V v : result.values()) {
       System.out.println(v);
     }
   }
 
-  public static <K,V> void getAllBinary(IgniteCache<K,V> cache){
+  public static <K, V> void getAllBinary(IgniteCache<K, V> cache) {
     Set<Integer> keys = new HashSet<>();
     for (int i = 0; i < 100; i++) {
       keys.add(i);

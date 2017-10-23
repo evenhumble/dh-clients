@@ -21,7 +21,7 @@ import io.hedwig.dh.restignite.utils.client.IgniteWrapper;
  */
 
 @RestController
-public class IgnitCacheController {
+public class IgniteCacheController {
 
   @RequestMapping(value = "/cache/{cache}/key/{key}"
       , produces = MediaType.APPLICATION_JSON_UTF8_VALUE

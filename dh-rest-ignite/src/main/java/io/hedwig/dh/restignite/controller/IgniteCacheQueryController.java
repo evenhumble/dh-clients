@@ -55,6 +55,7 @@ public class IgniteCacheQueryController {
   }
 
 
+
   @RequestMapping(value = "/sql"
       , produces = MediaType.APPLICATION_JSON_UTF8_VALUE
       , consumes = MediaType.APPLICATION_JSON_UTF8_VALUE
