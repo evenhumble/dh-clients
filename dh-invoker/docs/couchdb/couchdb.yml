@@ -1,0 +1,50 @@
+- name: database
+  api:
+    name: list all database
+    path: _all_dbs
+    method: GET
+  api:
+    name: create database
+    path: {dbName}
+    method: PUT
+  api:
+    name: delete database
+    path: {dbName}
+    method: DELETE
+  api:
+    name: relication database
+    path: _replicate
+    method: POST
+    body:
+      - target
+      - source
+
+- name: document API
+  api:
+    name: get UUID
+    path: _uuid
+    parameters:
+      - count
+    method: GET
+  api:
+    name: get by id
+    path: /{database}/{id}
+    method: GET
+  api:
+    name: update document
+    path: /{database}/{id}
+    method: PUT
+    body: json
+
+## attachment
+#Creating a database (PUT /database)
+#Deleting a database (DELETE /database)
+#Setup a database security (PUT /database/_security)
+#Creating a design document (PUT /database/_design/app)
+#Updating a design document (PUT /database/_design/app?rev=1-4E2)
+#Deleting a design document (DELETE /database/_design/app?rev=2-6A7)
+#Triggering compaction (POST /database/_compact)
+#Reading the task status list (GET /_active_tasks)
+#Restarting the server (POST /_restart)
+#Reading the active configuration (:get:`GET /_node/{node-name}/_config </_config>`)
+#Updating the active configuration (:put:`PUT /_node/{node-name}/_config/section/key </_config/{section}/{key}>`)

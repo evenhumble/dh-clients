@@ -8,7 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.hedwig.app.exchange.client.IgniteWrapper;
+import io.hedwig.ignitops.utils.client.IgniteWrapper;
+
 
 public class IgniteDaoService {
 

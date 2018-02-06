@@ -19,8 +19,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring-cloud.version>Dalston.SR3</spring-cloud.version>
-        <springboot.version>1.5.8.RELEASE</springboot.version>
-        <ignite.version>2.1.4</ignite.version>
+        <springboot.version>1.5.7.RELEASE</springboot.version>
+        <ignite.version>2.3.0</ignite.version>
         <gridgain.version>8.1.4</gridgain.version>
         <jmeter.version>3.3</jmeter.version>
     </properties>
@@ -48,16 +48,16 @@
                 <version>${springboot.version}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency>
-                <groupId>org.gridgain</groupId>
-                <artifactId>gridgain-ultimate</artifactId>
-                <version>8.1.4</version>
-            </dependency>
-            <dependency>
-                <groupId>org.gridgain</groupId>
-                <artifactId>gridgain-core</artifactId>
-                <version>8.1.4</version>
-            </dependency>
+            <!--<dependency>-->
+                <!--<groupId>org.gridgain</groupId>-->
+                <!--<artifactId>gridgain-ultimate</artifactId>-->
+                <!--<version>8.1.4</version>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+                <!--<groupId>org.gridgain</groupId>-->
+                <!--<artifactId>gridgain-core</artifactId>-->
+                <!--<version>8.1.4</version>-->
+            <!--</dependency>-->
             <dependency>
                 <groupId>org.apache.ignite</groupId>
                 <artifactId>ignite-core</artifactId>
@@ -136,31 +136,18 @@
                 <artifactId>spring-boot-starter-data-jpa</artifactId>
                 <version>${springboot.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.apache.ignite</groupId>
-                <artifactId>ignite-core</artifactId>
-                <version>${ignite.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.ignite</groupId>
-                <artifactId>ignite-spring</artifactId>
-                <version>${ignite.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.ignite</groupId>
-                <artifactId>ignite-indexing</artifactId>
-                <version>${ignite.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.gridgain</groupId>
-                <artifactId>gridgain-core</artifactId>
-                <version>${gridgain.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.gridgain</groupId>
-                <artifactId>gridgain-ultimate</artifactId>
-                <version>${gridgain.version}</version>
-            </dependency>
+
+
+            <!--<dependency>-->
+                <!--<groupId>org.gridgain</groupId>-->
+                <!--<artifactId>gridgain-core</artifactId>-->
+                <!--<version>${gridgain.version}</version>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+                <!--<groupId>org.gridgain</groupId>-->
+                <!--<artifactId>gridgain-ultimate</artifactId>-->
+                <!--<version>${gridgain.version}</version>-->
+            <!--</dependency>-->
             <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -212,10 +199,10 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>gridgain</id>
-            <url>http://www.gridgainsystems.com/nexus/content/repositories/external</url>
-        </repository>
-    </repositories>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>gridgain</id>-->
+            <!--<url>http://www.gridgainsystems.com/nexus/content/repositories/external</url>-->
+        <!--</repository>-->
+    <!--</repositories>-->
 </project>
